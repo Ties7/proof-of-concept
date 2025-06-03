@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Typography */
+@font-face {
+    font-family: "Proxima Nova";
+    src: url(../fonts/ProximaNova.otf) format("truetype");
+    font-display: swap;
+}
+
+body {
+    /* Colors */
+    --color-brand-primary: #ff9b21;
+    --color-background-default: #ffffff;
+    --color-text-cta: #2a8fd8;
+    --color-text-primary: #333333;
+    --color-foot: #fde9eb;
+    --color-border: #E6E6E6;
+}
