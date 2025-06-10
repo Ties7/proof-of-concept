@@ -27,8 +27,18 @@ app.engine("liquid", engine.express());
 app.set("views", "./views");
 
 // detailpagina
-app.get("/", async function (request, response) {
+app.get("/funda", async function (request, response) {
   response.render("detail-page.liquid");
+});
+
+app.get("/", async function (request, response) {
+  const housesResponse = await fetch('https://fdnd-agency.directus.app/items/f_houses')
+
+  const housesResponseJSON = await housesResponse.json()
+
+  const housesData = housesResponseJSON.data
+
+  response.render("overview-page.liquid", { houses: housesData });
 });
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
