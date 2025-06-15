@@ -28,7 +28,13 @@ app.set("views", "./views");
 
 // detailpagina
 app.get("/", async function (request, response) {
-  response.render("detail-page.liquid");
+  const housesResponse = await fetch('https://fdnd-agency.directus.app/items/f_houses')
+
+  const housesResponseJSON = await housesResponse.json()
+
+  const housesData = housesResponseJSON.data
+
+  response.render("detail-page.liquid", { houses: housesData });
 });
 
 
