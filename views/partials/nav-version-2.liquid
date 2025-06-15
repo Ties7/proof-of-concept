@@ -1,8 +1,8 @@
-<header>
+<header class="header">
     
 	<a class="nav-logo" href=""><img src="/assets/logo.svg" alt=""></a>
 	
-	<button hidden>
+	<button class="menu" hidden>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 7C3 6.58579 3.33579 6.25 3.75 6.25H18.75C19.1642 6.25 19.5 6.58579 19.5 7C19.5 7.41421 19.1642 7.75 18.75 7.75H3.75C3.33579 7.75 3 7.41421 3 7Z" fill="white"/>
             <path d="M3 12C3 11.5858 3.33579 11.25 3.75 11.25H20.25C20.6642 11.25 21 11.5858 21 12C21 12.4142 20.6642 12.75 20.25 12.75H3.75C3.33579 12.75 3 12.4142 3 12Z" fill="white"/>
@@ -11,7 +11,7 @@
         <p>menu</p>
     </button>
 	
-	<nav>
+	<nav class="nav-first">
         <ul>
             <li><a href="">Menu</a><button hidden><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="presentation" viewBox="0 0 48 48" aria-hidden="true" class="fill-current text-neutral-40"><path d="M26.12 24l10.61-10.61a1.5 1.5 0 000-2.12 1.5 1.5 0 00-2.12 0L24 21.88 13.39 11.27a1.5 1.5 0 10-2.12 2.12L21.88 24 11.27 34.61a1.5 1.5 0 102.12 2.12L24 26.12l10.61 10.61a1.5 1.5 0 002.12 0 1.5 1.5 0 000-2.12z"></path></svg></button></li>
             <li><a href="">Kopen</a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="presentation" viewBox="0 0 48 48" aria-hidden="true" class="absolute right-5 top-3 fill-current text-neutral-40 md:hidden"><path d="M35.66 18.83a1.5 1.5 0 00-2.12 0L24 28.37l-9.54-9.54A1.5 1.5 0 0012.34 21l10.57 10.53a1.52 1.52 0 002.13 0L35.66 21a1.5 1.5 0 000-2.17z" role="none"></path></svg></li>
@@ -20,7 +20,7 @@
 		</ul>
 	</nav>
 	
-	<nav>
+	<nav class="nav-second">
 		<ul>
 			<li>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,13 +53,20 @@
         margin: 0;
     }
 
-    header {
+    .header {
         height: 3.25rem;
         padding: .3em;
         background-color: var(--color-brand-primary);
         display: flex;
         align-items: center;
 
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: "";
+        
+            display: flex;
+        }
 
         nav {
             ul {
@@ -104,17 +111,9 @@
         display: flex;  
     }
 
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style-type: "";
-        
-        display: flex;
-    }
-
     /* JS DOET HET */
 
-    .js button {
+    .js .menu {
         cursor: pointer;
         display: inline-block;
         order: -1;
@@ -141,7 +140,7 @@
         }
     }
 
-    .js header {
+    .js .header {
         display: flex;
         gap: 1em;
     }
@@ -151,9 +150,8 @@
     }
 
 
-
     /* HAMBURGER NAV */
-    .js nav:nth-of-type(1) {
+    .js .nav-first:nth-of-type(1) {
         position: fixed;
         left: 0;
         right: 0;
@@ -169,15 +167,17 @@
     }
 
 
-    .js nav:nth-of-type(1).is-open {
+    .js .nav-first:nth-of-type(1).is-open {
+        z-index: 999999;
+
         translate: 0 0;
         background-color: white;
         display: flex;
         width: 100vw;
+        height: 100vh;
         
         ul {
             li:nth-of-type(1) {
-                flex-direction: row-reverse;
                 display: flex;
             }
 
@@ -201,6 +201,8 @@
                     align-items: center;
                     font-size: 16px;
                     padding: 0;
+                    background: none;
+                    border: none;
 
                     &:hover {
                         background: none;
@@ -215,22 +217,23 @@
         }
     }
 
-    .js nav:nth-of-type(1) ul {
+    .js .nav-first:nth-of-type(1) ul {
 	    flex-direction:column;
     }
+    
 
 
     @media (width > 800px) {
-        .js button {
+        .js .menu {
             display: none;
         }
         
-        .js nav:nth-of-type(1){
+        .js .nav-first:nth-of-type(1){
             position: static;
             translate: 0 0;
         }
         
-        .js nav:nth-of-type(1) ul {
+        .js .nav-first:nth-of-type(1) ul {
             flex-direction: row;
 
             li {
@@ -247,9 +250,10 @@
 
 
     /* ALTIJD ZICHTBAAR NAV */
-    .js nav:nth-of-type(2) {
+    .js .nav-second:nth-of-type(2) {
         margin-left: auto;
     }
+    
 
 </style>
 

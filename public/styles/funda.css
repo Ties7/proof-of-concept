@@ -44,7 +44,7 @@
 
 @media (min-width: 800px) {
     body {
-        padding-inline: 1rem;
+        /* padding-inline: 1rem; */
     }
 
     .gallery {
