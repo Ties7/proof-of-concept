@@ -19,4 +19,6 @@ body {
     --color-text-primary: #333333;
     --color-foot: #fde9eb;
     --color-border: #E6E6E6;
+
+    font-family: Proxima Nova;
 }
