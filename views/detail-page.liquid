@@ -12,7 +12,7 @@
     </form> {% endcomment %}
 
     <div class="gallery show-all">
-        {% for house in houses %}
+        {% for house in house %}
             <button class="gallery-item">
                 <img src="https://fdnd-agency.directus.app/assets/{{ house.poster_image }}?format=avif&width=300&height=250" loading="lazy" />
             </button>
@@ -39,7 +39,7 @@
 </svg>
 </button>
 
-            {% for house in houses %}
+            {% for house in house %}
                 <figure class="carousel-item">
                     <img class="carousel-img" src="https://fdnd-agency.directus.app/assets/{{ house.poster_image }}?format=avif&width=300&height=200" loading="lazy" />
                 </figure>
