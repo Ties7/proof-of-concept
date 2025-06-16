@@ -27,14 +27,27 @@ app.engine("liquid", engine.express());
 app.set("views", "./views");
 
 // detailpagina
+
 app.get("/", async function (request, response) {
   const housesResponse = await fetch('https://fdnd-agency.directus.app/items/f_houses')
 
   const housesResponseJSON = await housesResponse.json()
 
-  const housesData = housesResponseJSON.data
+  response.render("overview-page.liquid", { houses: housesResponseJSON.data });
+});
 
-  response.render("detail-page.liquid", { houses: housesData });
+app.get("/huis/:id", async function (request, response) {
+  // const houseResponse = await fetch('https://fdnd-agency.directus.app/items/f_houses')
+
+  const house = request.params.id
+
+  const houseResponse = await fetch(`https://fdnd-agency.directus.app/items/f_houses/?filter={"id":"${house}"}`)
+  const houseResponseJSON = await houseResponse.json()  
+  console.log(houseResponseJSON)
+
+  response.render("detail-page.liquid", { house: houseResponseJSON.data });
+
+  // response.render('detail-page.liquid', {house: houseResponseJSON.data[0]})
 });
 
 
