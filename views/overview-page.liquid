@@ -4,7 +4,7 @@
 
 {% for house in houses %}
 
-    <a class="house-overview-container" href="/huis/{{ house.id }}">
+    <a class="house-overview-container" href="/huis/{{ house.id }}/">
         <div class="house-overview">
             <img src="https://fdnd-agency.directus.app/assets/{{ house.poster_image }}?format=avif&width=300&height=250" alt="">
             {{ house.street }} {{ house.house_nr }}

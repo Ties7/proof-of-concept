@@ -3,18 +3,55 @@
 {% include 'partials/nav-version-2.liquid' %}
 
 <div class="gallery-container">
-    {% comment %} <form class="like-container" action="/like" method="POST" data-enhanced="">
-        <input type="hidden" name="likeid">
-        <button type="submit">
-            ""
+
+    {% comment %} <form class="like-container" action="/like" method="POST" data-enhanced="form-{{ house.id }}">
+        <input type="hidden" name="houseid" value="{{ house.id }}">
+        <button type="submit" class="like-button">
+            "0"
             <p>Bewaren</p>
         </button>
     </form> {% endcomment %}
 
+    <button class="like-button" data-liked="{{ liked }}">like</button>
+    <style>
+        .like-button[data-liked=true] {
+            background-color: green;
+            color: white;
+        }
+        .like-button[data-liked=false] {
+            background-color: red;
+            color: white;
+        }
+    </style>
+    <script>
+        const likeButton = document.querySelector(".like-button");
+        
+        likeButton.addEventListener("click", async function() {
+            // als data-liked van de button true is: het huis is geliked
+            const isLiked = likeButton.dataset.liked === "true";
+
+            // maak knop tijdelijk disabled
+            likeButton.disabled = true;
+
+            // maak request naar 'like' of 'unlike' afhankelijk van huidige like status
+            const url = isLiked ? "unlike" : "like";
+            const request = await fetch(url, { method: "POST" });
+            
+            // als liken goed is gegaan...
+            if(request.ok) {
+                likeButton.dataset.liked = !isLiked;
+                likeButton.removeAttribute("disabled");
+            }
+        });
+    </script>
+
     <div class="gallery show-all">
-        {% for house in house %}
+        <button class="gallery-item">
+            <img src="https://fdnd-agency.directus.app/assets/{{ house.poster_image }}?format=avif&width=300&height=250" loading="lazy" />
+        </button>
+        {% for asset in house.gallery %}
             <button class="gallery-item">
-                <img src="https://fdnd-agency.directus.app/assets/{{ house.poster_image }}?format=avif&width=300&height=250" loading="lazy" />
+                <img src="https://fdnd-agency.directus.app/assets/{{ asset.directus_files_id }}?format=avif&width=300&height=250" loading="lazy" />
             </button>
         {% endfor %}
     </div>
@@ -30,18 +67,23 @@
         </div>
 
         <div class="carousel">
-            <button class="carousel-btn left" alt="button left"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.2201 11.465L13.5001 6.17004C13.6423 6.03756 13.8303 5.96544 14.0246 5.96887C14.2189 5.9723 14.4043 6.05101 14.5417 6.18842C14.6791 6.32583 14.7578 6.51122 14.7613 6.70552C14.7647 6.89982 14.6926 7.08787 14.5601 7.23004L9.8151 12L14.5851 16.77C14.7257 16.9139 14.8033 17.1077 14.801 17.3089C14.7986 17.51 14.7165 17.702 14.5726 17.8425C14.4287 17.9831 14.2349 18.0608 14.0338 18.0584C13.8326 18.0561 13.6407 17.9739 13.5001 17.83L8.2351 12.545C8.09555 12.4029 8.01736 12.2117 8.01736 12.0125C8.01736 11.8134 8.09555 11.6222 8.2351 11.48L8.2201 11.465Z" fill="white"/>
-</svg>
-</button>
-            <button class="carousel-btn right" alt="button right"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M15.7799 11.465L10.4999 6.17004C10.3577 6.03756 10.1697 5.96544 9.97538 5.96887C9.78107 5.9723 9.59569 6.05101 9.45828 6.18842C9.32086 6.32583 9.24215 6.51122 9.23872 6.70552C9.23529 6.89982 9.30742 7.08787 9.4399 7.23004L14.1849 12L9.4149 16.77C9.27433 16.9139 9.19668 17.1077 9.19903 17.3089C9.20137 17.51 9.28352 17.702 9.4274 17.8425C9.57128 17.9831 9.7651 18.0608 9.96624 18.0584C10.1674 18.0561 10.3593 17.9739 10.4999 17.83L15.7649 12.545C15.9045 12.4029 15.9826 12.2117 15.9826 12.0125C15.9826 11.8134 15.9045 11.6222 15.7649 11.48L15.7799 11.465Z" fill="white"/>
-</svg>
-</button>
+            <button class="carousel-btn left" alt="button left">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.2201 11.465L13.5001 6.17004C13.6423 6.03756 13.8303 5.96544 14.0246 5.96887C14.2189 5.9723 14.4043 6.05101 14.5417 6.18842C14.6791 6.32583 14.7578 6.51122 14.7613 6.70552C14.7647 6.89982 14.6926 7.08787 14.5601 7.23004L9.8151 12L14.5851 16.77C14.7257 16.9139 14.8033 17.1077 14.801 17.3089C14.7986 17.51 14.7165 17.702 14.5726 17.8425C14.4287 17.9831 14.2349 18.0608 14.0338 18.0584C13.8326 18.0561 13.6407 17.9739 13.5001 17.83L8.2351 12.545C8.09555 12.4029 8.01736 12.2117 8.01736 12.0125C8.01736 11.8134 8.09555 11.6222 8.2351 11.48L8.2201 11.465Z" fill="white"/>
+                </svg>
+            </button>
+            <button class="carousel-btn right" alt="button right">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.7799 11.465L10.4999 6.17004C10.3577 6.03756 10.1697 5.96544 9.97538 5.96887C9.78107 5.9723 9.59569 6.05101 9.45828 6.18842C9.32086 6.32583 9.24215 6.51122 9.23872 6.70552C9.23529 6.89982 9.30742 7.08787 9.4399 7.23004L14.1849 12L9.4149 16.77C9.27433 16.9139 9.19668 17.1077 9.19903 17.3089C9.20137 17.51 9.28352 17.702 9.4274 17.8425C9.57128 17.9831 9.7651 18.0608 9.96624 18.0584C10.1674 18.0561 10.3593 17.9739 10.4999 17.83L15.7649 12.545C15.9045 12.4029 15.9826 12.2117 15.9826 12.0125C15.9826 11.8134 15.9045 11.6222 15.7649 11.48L15.7799 11.465Z" fill="white"/>
+                </svg>
+            </button>
 
-            {% for house in house %}
+            <figure class="carousel-item">
+                <img class="carousel-img" src="https://fdnd-agency.directus.app/assets/{{ house.poster_image }}?format=avif&width=300&height=200" loading="lazy" />
+            </figure>
+            {% for asset in house.gallery %}
                 <figure class="carousel-item">
-                    <img class="carousel-img" src="https://fdnd-agency.directus.app/assets/{{ house.poster_image }}?format=avif&width=300&height=200" loading="lazy" />
+                    <img class="carousel-img" src="https://fdnd-agency.directus.app/assets/{{ asset.directus_files_id }}?format=avif&width=300&height=200" loading="lazy" />
                 </figure>
             {% endfor %}
         </div>
