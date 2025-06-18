@@ -65,6 +65,10 @@
     .gallery-wrapper {
         width: fit-content;
     }
+
+    .gallery-container {
+        margin-top: 2rem;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -75,6 +79,10 @@
     /* show first 5 items */
     .gallery-item:nth-child(-n + 5) {
         display: block;
+    }
+
+    .gallery-container {
+        margin-top: 2rem;
     }
 }
 
