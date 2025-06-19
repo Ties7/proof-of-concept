@@ -91,9 +91,15 @@ https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab18
 https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/server.js#L68-L74
 
 ### Share
+- Er wordt voor de share button een click event toegevoegd. Als er op wordt geklikt word er eerst gekeken of 'navigator.share' ondersteund word. Zo wel dan wordt dat uitgevoerd, maar zo niet dan wordt 'navigator.clipboard' uitgevoerd. Hoe het kan dat de link wordt gekopieërd van de pagina waar je op zit is, omdat helemaal bovenaan er in 'shareData' voor het url doormiddel van 'window.location.href' de pagina waar je op dit moment op zit achterhaald wordt.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L230-L254
+- De svg veranderd van de 'share icon' naar de 'check icon' door javascript die de html veranderd. 'innerHTML' is het gene wat ervoor zorgt dat de html vervangen wordt.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L257-L261
+- Ten slotte zorgt de 'setTimeout' ervoor dat het maar voor 2 seconden vervangen wordt.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L263-L265
 
 ## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+Ga naar de website van Node.js (https://nodejs.org/en) en download de LTS versie. Allereerst is het belangrijk om de repo te forken en clonen zodat je in je eigen omgeving zit. Ga daarom naar github en als je in de juiste repo zit druk dan fork. Na het forken open je de repo met github desktop door op de groene 'code' button en daarna op 'open with GitHub Desktop' te drukken. In github desktop clone je de repo zodat de code in vscode staat. Nu open je je terminal en navigeer je naar de juiste map (waar je je repo lokaal hebt staan) en voer " cd 'locatie/pad van repo' " uit. Ook kan dit door in github desktop op 'repository' te drukken en daarna op 'open in command prompt'. Met de laatste manier ben je automatisch al in de juiste locatie/pad in de terminal. Nu je in je terminal in de juiste map bent voer je 'npm install' uit in terminal om alle benodigde paketten te installeren. Voer nu 'npm start' uit in terminal om lokaal je 'server' op te starten. Open het adres wat te zien is na het uitvoeren van stap 4 (http://localhost:'port') Mocht je dingen veranderen in server.js moet je je lokale 'server' opnieuw starten door 'ctrl + c' of 'cmd + c' te typen in de terminal waar je ook de server hebt opgestart. Om hem op te starten typ je weer 'npm start' in de terminal. Nu kun je werken in je eigen omgeving doormiddel van node :)
 
 ## Bronnen
 
