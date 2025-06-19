@@ -40,7 +40,7 @@ Als je na het liken in de nav bar navigeerd naar 'favorieten' dan krijg je op di
 ### Share
 https://github.com/user-attachments/assets/d32aa743-cb74-4884-a9d6-2af6ac96d027
 
-Links naast de like/favorieten button staat de share button. Als je device (navigator.share) ondersteund dan opent het deel scherm van je device en word het niet ondersteund dan zal de link van de huidige pagina gewoon gekopieërd worden naar je clipboard. Als je op de share button hebt geklikt dan veranderd het share icoontje naar een check icoontje. Dit is heel belangrijk voor devices/browsers waar de navigator.share niet ondersteund word, zodat de gebruiker weet dat de link gekopieërd is. Anders zal de gebruiker er op blijven klikken als er geen feedback is.
+Links naast de like/favorieten button staat de share button. Als je device (navigator.share) ondersteund dan opent het deel scherm van je device en word het niet ondersteund dan zal de link van de huidige pagina gewoon gekopieërd worden naar je clipboard. Als je op de share button hebt geklikt dan veranderd het share icoontje naar een check icoontje. Dit is heel belangrijk voor devices/browsers waar de navigator.share niet ondersteund wordt, zodat de gebruiker weet dat de link gekopieërd is. Anders zal de gebruiker er op blijven klikken als er geen feedback is.
 
 ## Kenmerken
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
@@ -48,7 +48,7 @@ Links naast de like/favorieten button staat de share button. Als je device (navi
 De nav bar is progressive enhanced door deze javascript:
 https://github.com/Ties7/proof-of-concept/blob/297106d43a5fed2f29d2283d1410583331b583d0/views/partials/nav-version-2.liquid#L261
 
-Als de javascript uit staat dan zal de class '.js' niet aan de html worden gegeven. Daardoor werkt sommige styling in css niet. Daardoor word het hamburger menu altijd uitgeklapt waardoor je altijd alle content kan zien, zelfs als js uit staat. 
+Als de javascript uit staat dan zal de class '.js' niet aan de html worden gegeven. Daardoor werkt sommige styling in css niet. Daardoor wordt het hamburger menu altijd uitgeklapt waardoor je altijd alle content kan zien, zelfs als js uit staat. 
 
 ### Image viewer
 De image viewer is progressive enhanced door deze javascript:
@@ -59,7 +59,7 @@ De javascript die haalt de 'show-all' class op de gallery weg. Als de javascript
 De image viewer werkt verder als volgt:
 - De afbeeldingen worden per schermgrootte anders weergegeven door middel van nth-child.
 https://github.com/Ties7/proof-of-concept/blob/297106d43a5fed2f29d2283d1410583331b583d0/public/styles/funda.css#L67-L69
-- De dialog/modal word geopend doormiddel van deze javascript
+- De dialog/modal wordt geopend doormiddel van deze javascript
 https://github.com/Ties7/proof-of-concept/blob/297106d43a5fed2f29d2283d1410583331b583d0/public/scripts/detail-page.js#L47-L48
 - Hier wordt eerst de gallery geselecteerd en er word een array aangemaakt van alle <li>'s in de gallery
 https://github.com/Ties7/proof-of-concept/blob/297106d43a5fed2f29d2283d1410583331b583d0/public/scripts/detail-page.js#L47-L48
@@ -91,9 +91,15 @@ https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab18
 https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/server.js#L68-L74
 
 ### Share
+- Er wordt voor de share button een click event toegevoegd. Als er op wordt geklikt word er eerst gekeken of 'navigator.share' ondersteund wordt. Zo wel dan wordt dat uitgevoerd, maar zo niet dan wordt 'navigator.clipboard' uitgevoerd. Hoe het kan dat de link wordt gekopieërd van de pagina waar je op zit is, omdat helemaal bovenaan er in 'shareData' voor het url doormiddel van 'window.location.href' de pagina waar je op dit moment op zit achterhaald wordt.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L230-L254
+- De svg veranderd van de 'share icon' naar de 'check icon' door javascript die de html veranderd. 'innerHTML' is het gene wat ervoor zorgt dat de html vervangen wordt.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L257-L261
+- Ten slotte zorgt de 'setTimeout' ervoor dat het maar voor 2 seconden vervangen wordt.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L263-L265
 
 ## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+Ga naar de website van Node.js (https://nodejs.org/en) en download de LTS versie. Allereerst is het belangrijk om de repo te forken en clonen zodat je in je eigen omgeving zit. Ga daarom naar github en als je in de juiste repo zit druk dan fork. Na het forken open je de repo met github desktop door op de groene 'code' button en daarna op 'open with GitHub Desktop' te drukken. In github desktop clone je de repo zodat de code in vscode staat. Nu open je je terminal en navigeer je naar de juiste map (waar je je repo lokaal hebt staan) en voer " cd 'locatie/pad van repo' " uit. Ook kan dit door in github desktop op 'repository' te drukken en daarna op 'open in command prompt'. Met de laatste manier ben je automatisch al in de juiste locatie/pad in de terminal. Nu je in je terminal in de juiste map bent voer je 'npm install' uit in terminal om alle benodigde paketten te installeren. Voer nu 'npm start' uit in terminal om lokaal je 'server' op te starten. Open het adres wat te zien is na het uitvoeren van stap 4 (http://localhost:'port') Mocht je dingen veranderen in server.js moet je je lokale 'server' opnieuw starten door 'ctrl + c' of 'cmd + c' te typen in de terminal waar je ook de server hebt opgestart. Om hem op te starten typ je weer 'npm start' in de terminal. Nu kun je werken in je eigen omgeving doormiddel van node :)
 
 ## Bronnen
 
