@@ -42,7 +42,14 @@
             {% endfor %}
         </div>
 
+    <section class="details-short-container">
+        <h2>{{ house.street }} {{ house.house_nr }}</h2>
+        <p>{{ house.postal_code }} {{ house.city }}</p>
+    </section>
+
     </div>
+
+    
 </div>
 
 <dialog class="detail-modal">
@@ -265,7 +272,5 @@
         }, 2000);
 
     });
-
-
 
 </script>
