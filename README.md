@@ -70,7 +70,7 @@ Er wordt een click event toegevoegd die de functie 'openModal(index) aanroept bi
 https://github.com/Ties7/proof-of-concept/blob/main/public/scripts/detail-page.js#L58-L62
 
 ### Favorieten POST
-- Eerst wordt er op de button wordt een click eventlistener toegevoegd.
+- Eerst wordt er op de button een click eventlistener toegevoegd.
 https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L210
 - De 'data-like' is true of falsee. True betekend dat het huis al geliked is en false betekend dat het huis nog niet geliked is. Of het true of false is komt uit een functie uit de server.js. Daar is een functie die op een bepaald id zoekt of die in de liked database staat. Komt daar niks uit dan !!undefined = false, en zo wel dan !!{} = true
 https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L26
