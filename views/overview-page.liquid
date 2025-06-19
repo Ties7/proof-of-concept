@@ -2,21 +2,50 @@
 
 {% include 'partials/nav-version-2.liquid' %}
 
-{% for house in houses %}
-
-    <a class="house-overview-container" href="/huis/{{ house.id }}">
-        <div class="house-overview">
-            <img src="https://fdnd-agency.directus.app/assets/{{ house.poster_image }}?format=avif&width=300&height=250" alt="">
-            {{ house.street }} {{ house.house_nr }}
-        </div>
-    </a>
-    
-{% endfor %}
+<div class="houses-grid">
+    {% for house in houses %}
+        <a class="house-overview-container" href="/huis/{{ house.id }}/">
+            <div class="house-overview">
+                <img src="https://fdnd-agency.directus.app/assets/{{ house.poster_image }}?format=avif&width=300&height=250" alt="">
+                {{ house.street }} {{ house.house_nr }}
+            </div>
+        </a>
+    {% endfor %}
+</div>
 
 {% render 'partials/foot.liquid' %}
 
 <style>
-    .house-overview-container {
+    .houses-grid {
         display: grid;
+
+        @media (min-width: 800px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1200px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .house-overview-container {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .house-overview {
+        border-radius: 1rem;
+        padding: 1rem;
+    }
+
+    .house-overview img {
+        width: 100%;
+        border-radius: .5rem;
+        height: auto;
+        display: block;
+        margin-bottom: 0.5rem;
     }
 </style>
