@@ -61,11 +61,11 @@ De image viewer werkt verder als volgt:
 https://github.com/Ties7/proof-of-concept/blob/297106d43a5fed2f29d2283d1410583331b583d0/public/styles/funda.css#L67-L69
 - De dialog/modal wordt geopend doormiddel van deze javascript
 https://github.com/Ties7/proof-of-concept/blob/297106d43a5fed2f29d2283d1410583331b583d0/public/scripts/detail-page.js#L47-L48
-- Hier wordt eerst de gallery geselecteerd en er word een array aangemaakt van alle <li>'s in de gallery
+- Hier wordt eerst de gallery geselecteerd en er word een array aangemaakt van alle 'li's in de gallery
 https://github.com/Ties7/proof-of-concept/blob/297106d43a5fed2f29d2283d1410583331b583d0/public/scripts/detail-page.js#L47-L48
-- Dit opent het <dialog> element. Dit gebeurd op (item), oftewel de <li> waar je op hebt geklikt. En door 'carousel.scrollto' opent de <li> waar je op hebt geklikt. Hier wordt namelijk de 'carouselclientWidth' vermenigvuldigd met 'item'. In woorden is dat 'de breedte van 1 afbeelding' vermenigvuldigd met 'huidige nummer van de aangeklikte <li>'.
+- Dit opent het <dialog> element. Dit gebeurd op (item), oftewel de 'li' waar je op hebt geklikt. En door 'carousel.scrollto' opent de 'li' waar je op hebt geklikt. Hier wordt namelijk de 'carouselclientWidth' vermenigvuldigd met 'item'. In woorden is dat 'de breedte van 1 afbeelding' vermenigvuldigd met 'huidige nummer van de aangeklikte 'li'.
 https://github.com/Ties7/proof-of-concept/blob/297106d43a5fed2f29d2283d1410583331b583d0/public/scripts/detail-page.js#L50-L62
-- Hier wordt voor elke galleryItem (de array met alle <li>'s) een functie aangemaakt. (item is huidige <li> en index is de positie in de array).
+- Hier wordt voor elke galleryItem (de array met alle 'li's) een functie aangemaakt. (item is huidige 'li' en index is de positie in de array).
 Er wordt een click event toegevoegd die de functie 'openModal(index) aanroept bij het uitvoeren. (index is de positie in de array)
 https://github.com/Ties7/proof-of-concept/blob/main/public/scripts/detail-page.js#L58-L62
 
