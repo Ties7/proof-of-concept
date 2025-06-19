@@ -69,10 +69,25 @@ Er wordt een click event toegevoegd die de functie 'openModal(index) aanroept bi
 https://github.com/Ties7/proof-of-concept/blob/main/public/scripts/detail-page.js#L58-L62
 
 ### Favorieten POST
+- Eerst wordt er op de button wordt een click eventlistener toegevoegd.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L210
 - De 'data-like' is true of falsee. True betekend dat het huis al geliked is en false betekend dat het huis nog niet geliked is. Of het true of false is komt uit een functie uit de server.js. Daar is een functie die op een bepaald id zoekt of die in de liked database staat. Komt daar niks uit dan !!undefined = false, en zo wel dan !!{} = true
 https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L26
-- 
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/server.js#L133
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L212
+- Als 'isLiked' true is dan moet het unliken en als het false is moet het liken. (/huis/1/like, /huis/1/unlike)
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L218
+- Daarna wordt er een post request gemaakt naar de url die we hiervoor hebben gedefinieerd.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L219
+- Daarna wordt de status veranderd, als het eerst true was wordt het nu false en andersom hetzelfde.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/views/detail-page.liquid#L223
 
+- Als de post request binnenkomt op bijvoorbeeld (/huis/:id/like) dan wordt die functie uitgevoerd. Dan wordt het id uit die url gehaald en op dat id wordt de functie 'likeHouse' aangeroepen. Dit werkt hetzelfde voor unliken, maar dan wordt de functie 'unlikeHouse' aangeroepen.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/server.js#L140-L144
+- Dan wordt er gekeken of het huis al geliked is, zo wel (is er al een message met dat id) dan wordt er niks gedaan. Zo niet wordt er naar de url gepost met daarin een 'for' en 'from'. de 'for' is het idee van het huis en de 'from' is 'ties-funda' om mijn posts te onderscheiden van die van de rest.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/server.js#L54-L66
+- Bij het unliken gebeurd er bijna hetzelfde, maar net iets anders. Er wordt weer gekeken of er al een message is met dat id, als die niet bestaat niks doen. Als die wel bestaat wordt er op het url met het juiste id de method delete gedaan.
+https://github.com/Ties7/proof-of-concept/blob/b43245cfd677df8b75dd914611bb5ab184ad7978/server.js#L68-L74
 
 ### Share
 
