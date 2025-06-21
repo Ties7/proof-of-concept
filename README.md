@@ -42,6 +42,9 @@ https://github.com/user-attachments/assets/d32aa743-cb74-4884-a9d6-2af6ac96d027
 
 Links naast de like/favorieten button staat de share button. Als je device (navigator.share) ondersteund dan opent het deel scherm van je device en word het niet ondersteund dan zal de link van de huidige pagina gewoon gekopieërd worden naar je clipboard. Als je op de share button hebt geklikt dan veranderd het share icoontje naar een check icoontje. Dit is heel belangrijk voor devices/browsers waar de navigator.share niet ondersteund wordt, zodat de gebruiker weet dat de link gekopieërd is. Anders zal de gebruiker er op blijven klikken als er geen feedback is.
 
+Ook krijg je een melding te zien als de share het niet doet en je er wel op drukt. Dit zodat de gebruiker weet wat er gebeurd.
+![WhatsApp Image 2025-06-21 at 13 31 03](https://github.com/user-attachments/assets/ca4c487c-bbf7-4907-8f3f-905b1464fab0)
+
 ## Kenmerken
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
 ### Nav-bar
