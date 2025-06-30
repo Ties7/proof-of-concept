@@ -111,7 +111,7 @@ app.get("/favorieten", async function (request, response) {
   // per like in de lijst met alle likes door de lijst met alle houses gaan. komt er één overeen dan dat huis in de lijst met gelikete huizen toevoegen (pushen)
   for (const like of liked) {
     for (const house of houses) {
-      if (like.for == house.id) { // == want getal en string vergelijken. getal == string is true, getal === string is false.
+      if (like.for == house.id) { // == want string en getal vergelijken. string == getal is true, string === getal is false.
         likedHouses.push(house);
         break; // stoppen als er een huis (id) overeenkomt met like (for). dit voor de performance
       }
@@ -129,8 +129,8 @@ app.get("/huis/:id", async function (request, response) {
   const house = await getHouse(houseId);
   const liked = await getLiked(houseId);
 
-  // !liked als er geen liked is en !!liked als er geen geen liked is oftewel als er wel een like is
-  const isLiked = !!liked;
+  // !!liked als er geen geen liked is oftewel als er wel een like is
+  const isLiked = !!liked; // dit wordt gebruikt voor de data-liked {{ liked }}, true of false
 
   response.render("detail-page.liquid", { house: house, liked: isLiked });
 });
@@ -139,7 +139,7 @@ app.get("/huis/:id", async function (request, response) {
 
 app.post('/huis/:id/like', async function (request, response) { // post request op de route /huis/:id/like
   const houseId = request.params.id // haalt het id op
-  await likeHouse(houseId) // activeert likeHouse functie om met het id van dat huis een like toe te voegen
+  await likeHouse(houseId) // activeert likeHouse functie om met het id van dat huis
   response.send(200) // stuurt code terug als antwoord (ok)
 })
 

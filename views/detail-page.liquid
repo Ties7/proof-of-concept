@@ -215,20 +215,19 @@
     const likeButton = document.querySelector(".like-button");
     
     likeButton.addEventListener("click", async function() {
-        // als data-liked van de button true is: het huis is geliked
-        const isLiked = likeButton.dataset.liked === "true";
+        const isLiked = likeButton.dataset.liked === "true"; //vergelijkt de data-liked gelijk is aan true. isLiked = true, of false
 
         // maak knop tijdelijk disabled
         likeButton.disabled = true;
 
         // maak request naar 'like' of 'unlike' afhankelijk van huidige like status
-        const url = isLiked ? "unlike" : "like";
-        const request = await fetch(url, { method: "POST" });
+        const url = isLiked ? "unlike" : "like"; // isLiked = true dan "unlike" anders "like" (op basis van of hierboven true of false uit kwam)
+        const request = await fetch(url, { method: "POST" }); // post request naar het juiste url (of "unlike" of "like") (bijv: /huis/:id/like)
         
         // als liken goed is gegaan...
         if(request.ok) {
-            likeButton.dataset.liked = !isLiked;
-            likeButton.removeAttribute("disabled");
+            likeButton.dataset.liked = !isLiked; //!false wordt true, !true wordt false
+            likeButton.removeAttribute("disabled"); // je kan weer op de knop drukken
         }
     });
 
