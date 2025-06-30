@@ -19,7 +19,7 @@ Ik heb de overzichtspagina (waar alle huizen te zien zijn), de detailpagina (waa
 
 Op desktop zijn alle navigatie links te zien en links en rechts gepositioneerd in de nav. Op mobile blijven de rechter navigatie links zichtbaar en de linker links veranderen in een hamburger menu die in- en uitklapbaar is. Als je het hamburger menu opent dan fade die vanaf boven naar beneden in en vult het hele scherm. Dat hamburger menu is te sluiten door het kruisje.
 
-Als de javascript uit staat dan klapt het hamburger menu op mobile uit zodat je ook op mobile dan door alle links kan navigeren.
+Als de javascript uit staat dan klapt het hamburger menu op mobile uit zodat je ook op mobile dan door alle links kan navigeren. Ik heb hier voor gekozen, omdat de core functionality van de nav is dat je kan navigeren tussen alle links. Als javascript uit staat en je kijkt de website op mobile dan zou het hamburger menu niet uitklapbaar zijn en kan je een deel van de nav niet gebruiken, daarom heb ik er voor gekozen om doormiddel van een js class de nav progressively enhanced te maken (meer hierover bij kenmerken).
 
 ### Image viewer
 ![image](https://github.com/user-attachments/assets/4c58d574-ebc7-459d-aa36-5cc5912d5466)
@@ -27,7 +27,7 @@ Als de javascript uit staat dan klapt het hamburger menu op mobile uit zodat je 
 
 Op desktop zie je de eerste 5 preview images, op tablet de eerste 3 en op mobile alleen de eerste. Als je de image viewer opent dan kan je in de carousel door alle images heen swipen/klikken. Alle images hebben scroll snap zodat de gebruiker een fijnere ervaring heeft.
 
-Als de javascript uit staat dan krijg je alle images in een grid te zien en kan je niet meer een carousel openen. Dit is, zodat je altijd alle afbeeldingen kan bekijken.
+Als de javascript uit staat dan krijg je alle images in een grid te zien en kan je niet meer een carousel openen. Dit is, zodat je altijd alle afbeeldingen kan bekijken. Ik heb hier voor gekozen, omdat de core functionality van de image viewer is dat je alle images kan bekijken en met deze oplossing kan dat ook.
 
 ### Favorieten POST
 https://github.com/user-attachments/assets/1dc2ec68-5683-4a05-9280-d650f5918556
@@ -41,6 +41,9 @@ Als je na het liken in de nav bar navigeerd naar 'favorieten' dan krijg je op di
 https://github.com/user-attachments/assets/d32aa743-cb74-4884-a9d6-2af6ac96d027
 
 Links naast de like/favorieten button staat de share button. Als je device (navigator.share) ondersteund dan opent het deel scherm van je device en word het niet ondersteund dan zal de link van de huidige pagina gewoon gekopieërd worden naar je clipboard. Als je op de share button hebt geklikt dan veranderd het share icoontje naar een check icoontje. Dit is heel belangrijk voor devices/browsers waar de navigator.share niet ondersteund wordt, zodat de gebruiker weet dat de link gekopieërd is. Anders zal de gebruiker er op blijven klikken als er geen feedback is.
+
+Ook krijg je een melding te zien als de share het niet doet en je er wel op drukt. Dit zodat de gebruiker weet wat er gebeurd.
+![WhatsApp Image 2025-06-21 at 13 31 03](https://github.com/user-attachments/assets/ca4c487c-bbf7-4907-8f3f-905b1464fab0)
 
 ## Kenmerken
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
